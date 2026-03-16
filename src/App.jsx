@@ -1,6 +1,10 @@
 export default function App() {
 	return (
-		<main className="">
+		<main className="
+			bg-Neutral-900 text-Neutral-0
+			p-4
+			min-h-dvh
+		">
 			<div className="">
 				{/* <!-- Form starts --> */}
 				Your Journey to Coding Conf 2025 Starts Here! Secure your spot at next
