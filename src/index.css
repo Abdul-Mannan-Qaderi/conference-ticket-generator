@@ -22,6 +22,10 @@
 	font-family: Inconsolata, sans-serif;
 }
 
+html {
+	font-size: 16px;
+}
+
 :root {
 	--color-Neutral-0: hsl(0, 0%, 100%);
 	--color-Neutral-300: hsl(252, 6%, 83%);
@@ -65,4 +69,49 @@ main {
 		bottom left;
 	background-size: 110px, 257%, 120px, 110px, 300px, cover;
 	background-repeat: no-repeat;
+}
+
+label {
+	font-size: 20px;
+}
+
+@media screen and (min-width: 768px) {
+	main {
+		background-image:
+			url("./assets/images/pattern-circle.svg"),
+			url("./assets/images/pattern-lines.svg"),
+			url("./assets/images/pattern-squiggly-line-top.svg"),
+			url("./assets/images/pattern-circle.svg"),
+			url("./assets/images/pattern-squiggly-line-bottom-mobile-tablet.svg"),
+			url("./assets/images/background-tablet.png");
+		background-position:
+			44px -60px,
+			center,
+			100% 28px,
+			115% 60%,
+			bottom left,
+			bottom left;
+		background-size: 200px, contain, 300px, 200px, 700px, cover;
+		background-repeat: no-repeat;
+	}
+}
+@media screen and (min-width: 1024px) {
+	main {
+		background-image:
+			url("./assets/images/pattern-circle.svg"),
+			url("./assets/images/pattern-lines.svg"),
+			url("./assets/images/pattern-squiggly-line-top.svg"),
+			url("./assets/images/pattern-circle.svg"),
+			url("./assets/images/pattern-squiggly-line-bottom-desktop.svg"),
+			url("./assets/images/background-desktop.png");
+		background-position:
+			44px -60px,
+			center,
+			100% 28px,
+			71% 60%,
+			bottom left,
+			bottom;
+		background-size: 200px, cover, 500px, 220px, 900px, cover;
+		background-repeat: no-repeat;
+	}
 }

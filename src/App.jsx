@@ -1,27 +1,25 @@
+import Form from "./components/Form";
+import Ticket from "./components/Ticket"; // create this page
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
 export default function App() {
 	return (
-		<main className="
-			bg-Neutral-900 text-Neutral-0
-			p-4
-			min-h-dvh
-		">
-			<div className="">
-				{/* <!-- Form starts --> */}
-				Your Journey to Coding Conf 2025 Starts Here! Secure your spot at next
-				year's biggest coding conference. Upload Avatar Drag and drop or click
-				to upload Upload your photo (JPG or PNG, max size: 500KB). Full Name
-				Email Address example@email.com GitHub Username @yourusername Generate
-				My Ticket
-				{/* <!-- Form ends --> */}
-				{/* <!-- Generated tickets starts --> */}
-				Congrats,
-				{/* <!-- Full Name -->! Your ticket is ready. */}
-				We've emailed your ticket to
-				{/* <!-- Email Address -->  */}
-				and will send updates in the run up to the event. Coding Conf Jan 31,
-				2025 / Austin, TX
-				{/* Generated tickets ends --> */}
-			</div>
-		</main>
+		<Router>
+			<main
+				className="
+					flex justify-center
+				bg-Neutral-900 text-Neutral-0
+					p-4
+					min-h-dvh
+				"
+			>
+				<div className="max-w-[1440px]">
+					<Routes>
+						<Route path="/" element={<Form />} />
+						<Route path="/ticket" element={<Ticket />} />
+					</Routes>
+				</div>
+			</main>
+		</Router>
 	);
 }
