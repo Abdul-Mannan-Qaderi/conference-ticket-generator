@@ -1,10 +1,12 @@
 import { useLocation } from "react-router-dom";
 import logo1 from "../assets/images/logo-mark.svg";
 import githubLogo from "../assets/images/icon-github.svg";
+import bg from "../assets/images/pattern-ticket.svg";
 export default function Ticket() {
 	const location = useLocation();
 	const { name, email, github, image } = location.state || {};
-
+	const fname = name.split(" ")[0];
+	const lname = name.split(" ")[1];
 	if (!location.state) {
 		return <p>No data found. Go back.</p>;
 	}
@@ -14,19 +16,76 @@ export default function Ticket() {
 	}
 	return (
 		<div className="pb-24 flex flex-col justify-center items-center">
-			{/* <!-- Form starts --> */}
-			<div className="flex justify-center items-center gap-3 text-xl md:text-3xl font-bold py-4 md:py-8">
+			<div className="flex justify-center items-center gap-3 text-2xl md:text-3xl font-bold py-4 md:py-8">
 				<img src={logo1} alt="logo" className="w-6 md:w-8" />
 				Coding Conf
 			</div>
-			<div className="py-3 text-center mb-4">
+
+			<div className="py-3 text-center mb-12">
 				<h1 className="text-3xl font-bold py-3 md:text-5xl lg:text-6xl">
-					Your Journey to Coding Conf
-					<br className="hidden md:block" /> 2026 Starts Here!
+					Congrats,{" "}
+					<span className="bg-gradient-to-r from-Orange-500 to-Neutral-0 text-transparent bg-clip-text">
+						{fname}
+					</span>{" "}
+					<span className="bg-gradient-to-r from-Orange-500 to-Neutral-0 text-transparent bg-clip-text">
+						{lname}
+					</span>
+					!
+					<br className="hidden md:block" /> Your ticket is ready.
 				</h1>
 				<p className="px-7 py-2 text-lg text-Neutral-300 md:text-2xl">
-					Secure your spot at next year's biggest coding conference.
+					We've emailed your ticket to <span className="text-Orange-300">{email}</span> and will send updates in the run
+					up to the event.
 				</p>
+			</div>
+
+			{/* TICKET STARTS */}
+			<div
+				className={`ticket relative  justify-between gap-3 bg-contain w-fit bg-no-repeat bg-center`}
+			>
+				<img className="" src={bg} alt="ticket background" />
+
+				<div className="absolute top-0 left-0 grid grid-cols-7 p-5 h-full w-full">
+					<div className="div-left col-span-6 flex flex-col justify-between">
+						<div className="flex justify-between items-start gap-3 text-2xl md:text-3xl font-bold h-fit w-fit md:py-8">
+							<img
+								src={logo1}
+								alt="logo"
+								className="w-8 md:w-8 justify-start "
+							/>
+							<div className="">
+								<h3 className="mb-1 -mt-1.5">Coding Conf</h3>
+								<p className="text-Neutral-500 text-[16px]">
+									Jan 31, 2025 / Austin, TX
+								</p>
+							</div>
+						</div>
+
+						<div className="flex gap-3">
+							{image && (
+								<img
+									src={image}
+									alt="avatar"
+									className="w-13 h-13 rounded-lg"
+								/>
+							)}
+							<div>
+								<h3 className="text-2xl">
+									{fname} {lname}
+								</h3>
+								<p className="flex text-Neutral-500">
+									<img className="w-4" src={githubLogo} alt="github lint" />
+									&nbsp;@{github}
+								</p>
+							</div>
+						</div>
+					</div>
+					<div className="div-right col-span-1 flex justify-start items-center">
+						<p className="rotate-90 h-fit w-fit text-2xl text-Neutral-500">
+							#{Math.round(Math.random() * 1000) + 10000}
+						</p>
+					</div>
+				</div>
 			</div>
 		</div>
 		// <div>

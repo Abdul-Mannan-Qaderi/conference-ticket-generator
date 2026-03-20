@@ -33,6 +33,7 @@ html {
 	--color-Neutral-700: hsl(245, 19%, 35%);
 	--color-Neutral-900: hsl(248, 70%, 10%);
 
+	--color-Orange-300: hsla(7, 100%, 80%, 0.849);
 	--color-Orange-500: hsl(7, 88%, 67%);
 	--color-Orange-700: hsl(7, 71%, 60%);
 
@@ -46,10 +47,29 @@ html {
 	--color-Neutral-700: hsl(245, 19%, 35%);
 	--color-Neutral-900: hsl(248, 70%, 10%);
 
+	--color-Orange-300: hsla(7, 100%, 80%, 0.849);
 	--color-Orange-500: hsl(7, 88%, 67%);
 	--color-Orange-700: hsl(7, 71%, 60%);
 
 	--color-Gradient-text: hsl(7, 86%, 67%) to hsl(0, 0%, 100%);
+}
+
+.ticket-l,
+.ticket-r {
+	border: 1px solid var(--color-Orange-500);
+	border-radius: 24px;
+}
+
+.ticket-l {
+	corner-left-shape: rounded;
+	corner-right-shape: scoop;
+	border-right: none;
+}
+
+.ticket-r {
+	corner-left-shape: scoop;
+	corner-right-shape: rounded;
+	border-left: none;
 }
 
 main {
