@@ -9,8 +9,26 @@ export default function Form() {
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [github, setGithub] = useState("");
+
+	const [imageError, setImageError] = useState("");
+	const [emailError, setEmailError] = useState("");
+
 	function handleSubmit(e) {
 		e.preventDefault();
+
+		let valid = true;
+
+		// email validation
+		const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+		if (!emailValid) {
+			setEmailError("Please enter a valid email address");
+			valid = false;
+		} else {
+			setEmailError("");
+		}
+
+		if (!valid) return;
+
 		const formData = {
 			name,
 			email,
@@ -22,7 +40,20 @@ export default function Form() {
 
 	function handleImageChange(e) {
 		const file = e.target.files[0];
+
 		if (file) {
+			// ❗ size validation
+			if (file.size > 500 * 1024) {
+				setImageError("File size must be less than 500KB");
+				setImage(null);
+
+				// reset input
+				e.target.value = "";
+				return;
+			}
+
+			setImageError("");
+
 			const reader = new FileReader();
 			reader.onload = function (event) {
 				setImage(event.target.result);
@@ -109,9 +140,15 @@ export default function Form() {
 							</div>
 						)}
 					</label>
-					<span className="text-[12px] flex items-center gap-1.5 text-Neutral-500">
+					<span
+						className={`text-[12px] flex items-center gap-1.5 ${imageError ? "block" : "hidden"} ${
+							imageError ? "text-Orange-300" : "text-Neutral-500"
+						}`}
+					>
 						<img src={infoLogo} alt="info logo" />
-						Upload your photo (JPG or PNG, max size: 500KB).
+						<span>
+							{imageError || "Upload your photo (JPG or PNG, max size: 500KB)."}
+						</span>
 					</span>
 				</div>
 				<div>
@@ -149,7 +186,10 @@ export default function Form() {
 						id="email"
 						placeholder="example@email.com"
 						value={email}
-						onChange={(e) => setEmail(e.target.value)}
+						onChange={(e) => {
+							setEmail(e.target.value);
+							setEmailError("");
+						}}
 						className="
 							bg-Neutral-500/20 backdrop-blur-[2px]
 							border border-Neutral-500 rounded-xl 
@@ -162,6 +202,12 @@ export default function Form() {
 						focus-visible:outline-Neutral-500
 						"
 					/>
+					{emailError && (
+						<span className="text-[12px] flex items-center gap-1.5 text-red-500 mt-1">
+							<img src={infoLogo} alt="info logo" />
+							{emailError}
+						</span>
+					)}
 				</div>
 				<div>
 					<label htmlFor="github" className="mb-2 inline-block">
