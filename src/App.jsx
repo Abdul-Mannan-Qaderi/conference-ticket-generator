@@ -15,8 +15,8 @@ export default function App() {
 			>
 				<div className="max-w-[1440px]">
 					<Routes>
-						<Route path="/" element={<Form />} />
-						<Route path="/ticket" element={<Ticket />} />
+						<Route path="/conference-ticket-generator" element={<Form />} />
+						<Route path="/conference-ticket-generator/ticket" element={<Ticket />} />
 					</Routes>
 				</div>
 			</main>

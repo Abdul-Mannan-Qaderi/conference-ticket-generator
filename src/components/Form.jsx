@@ -35,7 +35,7 @@ export default function Form() {
 			github,
 			image,
 		};
-		navigate("/ticket", { state: formData });
+		navigate("/conference-ticket-generator/ticket", { state: formData });
 	}
 
 	function handleImageChange(e) {
