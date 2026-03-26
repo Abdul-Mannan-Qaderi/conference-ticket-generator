@@ -145,7 +145,7 @@ export default function Form() {
 							imageError ? "text-Orange-300" : "text-Neutral-500"
 						}`}
 					>
-						<img src={infoLogo} alt="info logo" />
+						<span className="text-lg">&#9432;</span>
 						<span>
 							{imageError || "Upload your photo (JPG or PNG, max size: 500KB)."}
 						</span>
@@ -203,8 +203,8 @@ export default function Form() {
 						"
 					/>
 					{emailError && (
-						<span className="text-[12px] flex items-center gap-1.5 text-red-500 mt-1">
-							<img src={infoLogo} alt="info logo" />
+						<span className="text-[12px] flex items-center gap-1.5 text-Orange-300 mt-1">
+							<span className="text-lg">&#9432;</span>
 							{emailError}
 						</span>
 					)}
